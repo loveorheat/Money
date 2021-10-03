@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <title>Something Special</title>
+    <style type="text/css">
+    body{
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+	 color:#2f4f4f;
+	 margin-bottom: 10px;
+	 text-align:center;
+}
+.main_nav{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.main_nav ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2px;
+  margin: 0;
+}
+.main_nav ul li {
+    width: auto;
+    height: 3.125rem;
+	color:white;
+    background: #13a4a4;
+    text-align: center;
+    line-height: 3.125rem;
+    font-family: Arial, Helvetica, sans-serif;
+	margin-right: 1.25rem ;
+	padding: 0.3125rem ;
+    box-sizing: border-box;
+	border-radius: 5px;
+    box-shadow: 3px 3px 3px #eee;;
+    border-right: 1px solid #f5f5f5;
+ 
+}
+.main_nav table{
+	width: auto;
+    align:center;
+}
+.main_nav tr{
+	width: auto;
+	
+}
+.main_nav td a{
+	color:white;
+	background: #13a4a4;
+	text-decoration: none;
+}
+
+.section{
+    width: 100%;
+    height: 30rem;
+    border: 1px solid white;
+}
+
+.section div{
+    width: 100%;
+    height:100%;
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <headers>
+        <div><button onclick="hid()">用户信息</button>
+            <form method="POST" style="display:none" id="infor">
+                <input type="text" value="1" name ="inforusr" hidden/>
+            Cookie:<p>{{result[2]}}</p>
+            Token:<p>{{result[3]}}</p>
+           Cookie: <input type="text"  name="Cookie"/>
+           Token:<input type="text"  name="Token"/>  
+            <button  type="submit" ><i class="icon ion-md-lock"></i>修改</button>
+        </div>
+        </form>
+        <form method="POST">
+        <div><input type="text" value="0" name ="inforusr" hidden/>开始时间:<input type="date" name="starttime" value="2021-9-27" /> &nbsp;结束时间:<input type="date" name="endtime"/>&nbsp;页数：<input type="text" placeholder="输入维护页数" name="pagepro"/>&nbsp;页数：<input type="text" placeholder="输入新增页数" name="pagenew"/> <button type="submit" id="find" onclick="waiting()"><i class="icon ion-md-lock"></i>查询</button></div>
+    </form>
+    <form method="POST" enctype="multipart/form-data">
+    <input type="text" value="2" name ="inforusr" hidden/>
+    <input type="file" name="money"/>
+    <input type="submit" value="Submit" />
+    </form>
+    </header>
+    <section >
+       <table align="center">
+            <tr>
+            <td style="color:white;
+                background: orange;
+                text-decoration: none;">任务ID</td>
+            <td style="color:white;
+                background: #13a4a4;
+                text-decoration: none;">网站名称</td>
+             <td style="color:white;
+             background: #13a4a4;
+             text-decoration: none;">时间</td>
+              <td style="color:white;
+              background: #13a4a4;
+              text-decoration: none;">金额</td>
+              </tr>
+            {% for current in information %}
+            {% if current[0] in DiffenceId %}
+            <tr>
+                <td style="color:white;
+                    background: orange;
+                    text-decoration: none;">{{current[0]}}</td>
+                <td style="color:white;
+                    background: orange;
+                    text-decoration: none;">{{current[1]}}</td>
+                 <td style="color:white;
+                 background: orange;
+                 text-decoration: none;">{{current[2]}}</td>
+                  <td style="color:white;
+                  background: orange;
+                  text-decoration: none;">{{current[3]}}</td>
+                 </tr>
+            {% else %}
+            <tr>
+            <td style="color:white;
+                background: orange;
+                text-decoration: none;">{{current[0]}}</td>
+            <td style="color:white;
+                background: #13a4a4;
+                text-decoration: none;">{{current[1]}}</td>
+             <td style="color:white;
+             background: #13a4a4;
+             text-decoration: none;">{{current[2]}}</td>
+              <td style="color:white;
+              background: #13a4a4;
+              text-decoration: none;">{{current[3]}}</td>
+             </tr>
+             {% endif %}
+       {% endfor %}
+        </table>
+    </section>
+</body>
+<script>
+    function waiting() {
+     document.getElementById("find").innerHTML="<img src='/img/wait.gif'/>"
+   }
+   function hid(){
+    var traget=document.getElementById('infor');
+        if(traget.style.display=="none"){
+            traget.style.display="";
+        }else{
+            traget.style.display="none";
+      }
+   }
+ </script>
+</html>
